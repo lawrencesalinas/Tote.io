@@ -16,7 +16,7 @@ function App() {
           passing it a page component */}
           <Routes>
           <Route path='/' element={<HomeScreen/>} />
-          <Route pelement={<ProductScreen/>} />
+          <Route path='product/:id'element={<ProductScreen/>} />
           
           
           </Routes>
