@@ -28,6 +28,8 @@ function ProductScreen() {
           <Image src={product.image} alt={product.name} />
         </Col>
         <Col md={3}>
+            {/* ListGroup is used to have a customizable list with lines around the itemns */}
+            {/* flush is used to remove some borders and rounded corners to render list group items */}
           <ListGroup variant = 'flush'>
             <ListGroup.Item>
               <h3>{product.name}</h3>
@@ -56,6 +58,16 @@ function ProductScreen() {
                             <Col>Price:</Col>
                             <Col>
                                 <strong>${product.price}</strong>
+                            </Col>
+                        </Row>
+                    </ListGroup.Item>
+                </ListGroup>
+                <ListGroup variant = 'flush'>
+                    <ListGroup.Item>
+                        <Row>
+                            <Col>Status:</Col>
+                            <Col>
+                                {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
                             </Col>
                         </Row>
                     </ListGroup.Item>
