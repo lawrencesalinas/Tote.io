@@ -1,23 +1,24 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import Rating from "./Rating";
+import { Link } from 'react-router-dom'
 
 //bootsrap margin and padding added
 function Product(props) {
   // console.log(props)
   return (
     <Card className="my-3 p-3 rounded">
-      <a href={`/product/${props.product._id}`}>
+      <Link href={`/product/${props.product._id}`}>
         <h3>{props.product.name}</h3>
         <Card.Img src={props.product.image} />
-      </a>
+      </Link>
 
       <Card.Body>
-        <a href={`/product/${props.product._id}`}>
+        <Link href={`/product/${props.product._id}`}>
           <Card.Title as="div">
             <strong>{props.product.name}</strong>
           </Card.Title>
-        </a>
+        </Link>
 
         <Card.Text as="div">
           <div className="my-3">
