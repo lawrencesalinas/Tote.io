@@ -12,9 +12,11 @@ function App() {
       <Header/>
       <main className="py-3">
         <Container>
+          {/* We used routes using react-router-dom to render  a screen by
+          passing it a page component */}
           <Routes>
           <Route path='/' element={<HomeScreen/>} />
-          <Route path='/products/:id' element={<ProductScreen/>} />
+          <Route pelement={<ProductScreen/>} />
           
           
           </Routes>

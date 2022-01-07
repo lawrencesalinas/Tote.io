@@ -7,14 +7,16 @@ import { Link } from 'react-router-dom'
 function Product(props) {
   // console.log(props)
   return (
+    // margin and padding, used links  instead of hrefs so we dont render a page
+    // instead render a component
     <Card className="my-3 p-3 rounded">
-      <Link href={`/product/${props.product._id}`}>
+      <Link to={`/product/${props.product._id}`}>
         <h3>{props.product.name}</h3>
         <Card.Img src={props.product.image} />
       </Link>
 
       <Card.Body>
-        <Link href={`/product/${props.product._id}`}>
+        <Link to={`/product/${props.product._id}`}>
           <Card.Title as="div">
             <strong>{props.product.name}</strong>
           </Card.Title>
