@@ -2,6 +2,9 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import Rating from "./Rating";
 import { Link } from "react-router-dom";
+const linkStyle = {
+    textDecoration: 'none'
+  }
 
 //bootsrap margin and padding added
 function Product(props) {
@@ -12,12 +15,11 @@ function Product(props) {
     <Card className="my-3 p-3 rounded">
       <Link to={`/product/${props.product._id}`}>
         {/* render product name and image */}
-        <h3>{props.product.name}</h3>
         <Card.Img src={props.product.image} />
       </Link>
 
       <Card.Body>
-        <Link to={`/product/${props.product._id}`}>
+        <Link to={`/product/${props.product._id}`} style={linkStyle}>
           <Card.Title as="div">
             <strong>{props.product.name}</strong>
           </Card.Title>

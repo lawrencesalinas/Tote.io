@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Row, Col, Image, ListGroup, Button, Card } from "react-bootstrap";
+import { Row, Col, Image, ListGroup, Button, Card, ListGroupItem } from "react-bootstrap";
 import Rating from "../components/Rating";
 import products from "../products";
 import { useParams } from "react-router-dom";
@@ -22,15 +22,16 @@ function ProductScreen() {
         Go Back
       </Link>
       <Row>
-          {/* created 1 row with 2 colums, 1 of the columns is 6 and the other is 3 and 3 */}
+        {/* created 1 row with 2 colums, 1 of the columns is 6 and the other is 3 and 3 */}
         <Col md={6}>
-          {/* render product Image */}
+          {/* render product Image on first column */}
           <Image src={product.image} alt={product.name} />
         </Col>
         <Col md={3}>
-            {/* ListGroup is used to have a customizable list with lines around the itemns */}
-            {/* flush is used to remove some borders and rounded corners to render list group items */}
-          <ListGroup variant = 'flush'>
+          {/* ListGroup is used to have a customizable list with lines around the itemns */}
+          {/* flush is used to remove some borders and rounded corners to render list group items */}
+          {/* 2nd column*/}
+          <ListGroup variant="flush">
             <ListGroup.Item>
               <h3>{product.name}</h3>
             </ListGroup.Item>
@@ -41,38 +42,41 @@ function ProductScreen() {
                 color={"#f8e825"}
               />
             </ListGroup.Item>
-            <ListGroup.Item>
-            Price: ${product.price}
-            </ListGroup.Item>
+            <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
 
-            <ListGroup.Item>
-            Description: {product.description}
-            </ListGroup.Item>
+            <ListGroup.Item>Description: {product.description}</ListGroup.Item>
           </ListGroup>
         </Col>
+        {/* 3rd column, here rendered are the prices product count */}
         <Col md={3}>
-            <Card>
-                <ListGroup variant = 'flush'>
-                    <ListGroup.Item>
-                        <Row>
-                            <Col>Price:</Col>
-                            <Col>
-                                <strong>${product.price}</strong>
-                            </Col>
-                        </Row>
-                    </ListGroup.Item>
-                </ListGroup>
-                <ListGroup variant = 'flush'>
-                    <ListGroup.Item>
-                        <Row>
-                            <Col>Status:</Col>
-                            <Col>
-                                {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
-                            </Col>
-                        </Row>
-                    </ListGroup.Item>
-                </ListGroup>
-            </Card>
+          <Card>
+            <ListGroup variant="flush">
+              <ListGroup.Item>
+                {/* created two rows and two columns inside the column to render price and stock  */}
+                <Row>
+                  <Col>Price:</Col>
+                  <Col>
+                    <strong>${product.price}</strong>
+                  </Col>
+                </Row>
+              </ListGroup.Item>
+            </ListGroup>
+            <ListGroup variant="flush">
+              <ListGroup.Item>
+                <Row>
+                  <Col>Status:</Col>
+                  <Col>
+                    {/* render if count is in stock, if countInStock is > 1 render in stock else it's out of stock */}
+                    {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
+                  </Col>
+                </Row>
+              </ListGroup.Item>
+
+              <ListGroupItem>
+                  <Button className="btn-block" disabled={product.countInStock == 0} type='button'>Add to Cart</Button>
+              </ListGroupItem>
+            </ListGroup>
+          </Card>
         </Col>
       </Row>
     </div>
