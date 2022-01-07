@@ -68,7 +68,7 @@ function Rating(props, color) {
           }
         ></i>
       </span>
-      <spam>{props.text && props.text}</spam>
+      <span>{props.text && props.text}</span>
     </div>
   );
 }
