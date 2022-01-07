@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {row, col, Image, ListGroup, Button, Card,
-} from "react-router-bootstrap";
+import { Row, Col, Image, ListGroup, Button, Card } from "react-bootstrap";
 import Rating from "../components/Rating";
 import products from "../products";
 import { useParams } from "react-router-dom";
@@ -11,12 +10,61 @@ function ProductScreen() {
   // useParamms and find() was used to look for the product id
   const product = products.find((p) => {
     // console.log(p._id)
-    console.log("this is number", idParam.id);
+    // console.log("this is number", idParam.id)
     return p._id == idParam.id;
   });
   // console.log(product);
 
-  return <div>{product.name}</div>;
+  return (
+    <div>
+      {/* #go back buttom */}
+      <Link to="/" className="btn btn0ligh my-3">
+        Go Back
+      </Link>
+      <Row>
+          {/* created 1 row with 2 colums, 1 of the columns is 6 and the other is 3 and 3 */}
+        <Col md={6}>
+          {/* render product Image */}
+          <Image src={product.image} alt={product.name} />
+        </Col>
+        <Col md={3}>
+          <ListGroup variant = 'flush'>
+            <ListGroup.Item>
+              <h3>{product.name}</h3>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Rating
+                value={product.rating}
+                text={`${product.numReviews} reviews`}
+                color={"#f8e825"}
+              />
+            </ListGroup.Item>
+            <ListGroup.Item>
+            Price: ${product.price}
+            </ListGroup.Item>
+
+            <ListGroup.Item>
+            Description: {product.description}
+            </ListGroup.Item>
+          </ListGroup>
+        </Col>
+        <Col md={3}>
+            <Card>
+                <ListGroup variant = 'flush'>
+                    <ListGroup.Item>
+                        <Row>
+                            <Col>Price:</Col>
+                            <Col>
+                                <strong>${product.price}</strong>
+                            </Col>
+                        </Row>
+                    </ListGroup.Item>
+                </ListGroup>
+            </Card>
+        </Col>
+      </Row>
+    </div>
+  );
 }
 
 export default ProductScreen;
