@@ -1,26 +1,76 @@
-import React from 'react'
+import React from "react";
 
+function Rating(props, color) {
+  console.log("rating props", props);
+  return (
+    <div className="rating">
+      <span>
+        <i
+          style= {color}
+          className={
+            props.value >= 1
+              ? "fas fa-star"
+              : props.value >= 0.5
+              ? "fas fa-star-half-alt"
+              : "far fa-star"
+          }
+        ></i>
+      </span>
 
-function Rating(props,color) {
-    console.log('rating props',props);
-    return (
-        <div className='rating'>
-            <span>
-                <i style = {{color}} className= 'fas fa-star'>
-                {props.value} >=1
-                     ? ‘fas fa-star’
-                        : props.value >=  0.5
-                        ? ‘fas fa-star=half-alt’
-            
-                      : ‘far fa-star’
+      <span>
+        <i
+          style={{ color }}
+          className={
+            props.value >= 2
+              ? "fas fa-star"
+              : props.value >= 1.5
+              ? "fas fa-star-half-alt"
+              : "far fa-star"
+          }
+        ></i>
+      </span>
 
-                </i>
+      <span>
+        <i
+          style={{ color }}
+          className={
+            props.value >= 3
+              ? "fas fa-star"
+              : props.value >= 2.5
+              ? "fas fa-star-half-alt"
+              : "far fa-star"
+          }
+        ></i>
+      </span>
 
-             
-            </span>
-            
-        </div>
-    )
+      <span>
+        <i
+          style={{ color }}
+          className={
+            props.value >= 4
+              ? "fas fa-star"
+              : props.value >= 3.5
+              ? "fas fa-star-half-alt"
+              : "far fa-star"
+          }
+        ></i>
+      </span>
+
+      <span>
+        <i
+          style={{ color }}
+          className={
+            props.value >= 5
+              ? "fas fa-star"
+              : props.value >= 4.5
+              ? "fas fa-star-half-alt"
+              : "far fa-star"
+          }
+        ></i>
+      </span>
+      <spam>{props.text && props.text}</spam>
+    </div>
+  );
 }
 
-export default Rating
+export default Rating;

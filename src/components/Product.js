@@ -22,7 +22,7 @@ function Product(props) {
         <Card.Text as="div">
           <div className="my-3">
             {props.product.rating} from {props.product.numReviews}
-            <Rating value ={props.product.rating} text = {`${props.product.numReviews} reviews`} color={'yellow'}/>
+            <Rating value ={props.product.rating} text = {`${props.product.numReviews} reviews`} color={'#f8e825'}/>
           </div>
         </Card.Text>
 
