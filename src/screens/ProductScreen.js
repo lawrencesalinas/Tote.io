@@ -1,19 +1,30 @@
-import React from "react";
+import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
-import { Row, Col, Image, ListGroup, Button, Card, ListGroupItem } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Image,
+  ListGroup, 
+  Button,
+  Card,
+  ListGroupItem,
+} from "react-bootstrap";
 import Rating from "../components/Rating";
-import products from "../products";
 import { useParams } from "react-router-dom";
+import axios from 'axios';
 
 function ProductScreen() {
-  let idParam = useParams();
-  // useParamms and find() was used to look for the product id
-  const product = products.find((p) => {
-    // console.log(p._id)
-    // console.log("this is number", idParam.id)
-    return p._id == idParam.id;
-  });
-  // console.log(product);
+  let idParam = useParams()
+  const[product, setProduct] = useState([])
+    useEffect(() => {
+      async function fetchData(){
+        const { data} = await axios.get(`/api/product/${idParam.id}`)
+        console.log('I am data', data);
+        setProduct(data)
+      }
+      fetchData()
+  }, [])
+ 
 
   return (
     <div>
@@ -73,7 +84,14 @@ function ProductScreen() {
               </ListGroup.Item>
 
               <ListGroupItem>
-                  <Button className="btn-block" disabled={product.countInStock == 0} type='button'>Add to Cart</Button>
+                  {/* disabled is used from ListGroup, it makes the button unclickable if condition is met */}
+                <Button
+                  className="btn-block"
+                  disabled={product.countInStock == 0}
+                  type="button"
+                >
+                  Add to Cart
+                </Button>
               </ListGroupItem>
             </ListGroup>
           </Card>

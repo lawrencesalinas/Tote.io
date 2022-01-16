@@ -1,6 +1,21 @@
-#Tote.io
+# Tote.io
 
-##MVP
+## TechStack
++ Django
++ React
++ PostgreSql
++ Python
++ Javascript
++ Redux 
+
+ 
+
+
+
+
+
+ 
+# #MVP
 + Full featured shopping cart
 + Product reviews and ratings
 + Top products carousel

@@ -6,8 +6,7 @@ function Rating(props, color) {
     <div className="rating">
     {/* each span is one star */}
       <span>
-        <i
-          style= {{color:props.color}}
+        <i style= {{color:props.color}}
           className={
     // if rating is greater or equal to 1, star is filled  //
             props.value >= 1
