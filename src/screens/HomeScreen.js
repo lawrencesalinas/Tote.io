@@ -1,22 +1,31 @@
 import React, {useState, useEffect} from 'react'
 import { Row, Col } from "react-bootstrap"
 import Product from "../components/Product"
-import axios from "axios"
+import { useDispatch , useSelector} from 'react-redux' 
+import { listProducts} from '../actions/productActions'
 
+// useSelector let's use select parts of ourn state from our store
+
+// call action listporducts
 function HomeScreen() {
-  const[products,setProducts] = useState([])
+  const dispatch = useDispatch()
+      //use useSelector to render products called  from the store
+      // tell what part of state we want it to be in
+  const productList = useSelector(state => state.productList)
+  const {error, loading, products} = productList
 
   useEffect(() => {
-    async function fetchProducts(){
-      const { data } = await axios.get('/api/products')
-      // console.log('I am data',data);
-      setProducts(data)
-    }
-    fetchProducts()
+    dispatch(listProducts())
+
   },[])
+
+  // const products = []
   return (
     <div>
       <h1>Latest Products</h1>
+      {loading ? <h2>Loading...</h2>
+          :error? <h3>{error}</h3>
+      }
       <Row>
 {/* used map to iterate info products array imported from products */}
         {products.map((product) => {
