@@ -5,11 +5,15 @@ import thunk from 'redux-thunk'
 // function that apply our store to the redux dev tools
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { productListReducer, productDetailsReducer } from './reducers/productReducers'
+import { cartReducer } from './reducers/cartReducers';
+;
+
 
 
 const reducer = combineReducers({
     productList:productListReducer,
-    productDetails: productDetailsReducer
+    productDetails: productDetailsReducer,
+    cart: cartReducer
 })
 const initialState= {}
 const middleware = [thunk]   
