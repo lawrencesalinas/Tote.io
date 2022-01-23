@@ -9,19 +9,24 @@ import {
   Card,
   ListGroupItem,
 } from "react-bootstrap";
+import { useDispatch, useSelector} from 'react-redux'
 import Rating from "../components/Rating";
+import Loader from '../components/Loader'
+import Message from '../components/Message'
 import { useParams } from "react-router-dom";
-import axios from 'axios';
+import { listProductDetails } from '../actions/productActions'
 
 function ProductScreen() {
   let {id} = useParams()
-  const[product, setProduct] = useState([])
+  const dispatch = useDispatch()
+  const productDetails = useSelector(state => {
+    return state.productDetails
+  })
+  
+  const {loading, error, product} = productDetails
+   
     useEffect(() => {
-      async function fetchData(){
-        const {data} = await axios.get(`/api/product/${id}`)
-        setProduct(data)
-      }
-      fetchData()
+      dispatch(listProductDetails(id))
   }, [] )
  
 
@@ -31,7 +36,12 @@ function ProductScreen() {
       <Link to="/" className="btn btn0ligh my-3">
         Go Back
       </Link>
-      <Row>
+      {loading ?
+      <Loader/>
+      : error
+      ? <Message variant='danger'>{error}</Message>
+      :(
+        <Row>
         {/* created 1 row with 2 colums, 1 of the columns is 6 and the other is 3 and 3 */}
         <Col md={6}>
           {/* render product Image on first column */}
@@ -96,6 +106,9 @@ function ProductScreen() {
           </Card>
         </Col>
       </Row>
+      )
+      }
+   
     </div>
   );
 }
