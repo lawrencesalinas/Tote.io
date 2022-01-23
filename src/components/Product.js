@@ -28,7 +28,7 @@ function Product(props) {
         <Card.Text as="div">
           <div className="my-3">
            
-            {props.product.rating} from {props.product.numReviews}
+            {props.product.rating}  {props.product.numReviews}
             {/* render product proprs rating and number of reviews */}
             {/* props sent to Rating component  */}
             {/* render Rating component here */}
