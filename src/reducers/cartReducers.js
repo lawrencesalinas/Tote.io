@@ -8,7 +8,7 @@ export const cartReducer =  (state = { cartItems: [] }, action) => {
       case CART_ADD_ITEM:
         // check if products exist, payload nis the product
         const item = action.payload;
-        // loop through cart items if it exist
+        // loop through cart items if it exist                      //product here is the id not the porduct object
         const existItem = state.cartItems.find((x) => x.product === item.product);
         if (existItem) { 
           return {
