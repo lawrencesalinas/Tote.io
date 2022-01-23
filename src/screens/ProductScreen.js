@@ -13,10 +13,11 @@ import { useDispatch, useSelector } from "react-redux";
 import Rating from "../components/Rating";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import { listProductDetails } from "../actions/productActions";
 
-function ProductScreen({ match }) {
+function ProductScreen() {
+  const navigate = useNavigate()
   let { id } = useParams();
   const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
@@ -29,6 +30,12 @@ function ProductScreen({ match }) {
   useEffect(() => {
     dispatch(listProductDetails(id));
   }, [dispatch, id]);
+
+const addToCartHandler = () => {
+  // console.log('add to cart:',id);
+  navigate(`/cart/${id}?qty=${qty}`)
+}
+
 
   return (
     <div>
@@ -105,6 +112,7 @@ function ProductScreen({ match }) {
                         >
                           {
                             //array constructor to create array of that stock
+                            // created an array everytime we change the state or qty
                             [...Array(product.countInStock).keys()].map((x) => {
                              return  <option key={x + 1} value={x + 1}>
                                 {x + 1}
@@ -118,7 +126,8 @@ function ProductScreen({ match }) {
                 )}
                 <ListGroup.Item>
                   {/* disabled is used from ListGroup, it makes the button unclickable if condition is met */}
-                  <Button
+                  <Button 
+                    onClick={addToCartHandler}
                     className="btn-block"
                     disabled={product.countInStock == 0}
                     type="button"
