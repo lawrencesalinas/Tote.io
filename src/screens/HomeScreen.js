@@ -30,7 +30,7 @@ function HomeScreen() {
       {/* if loading render  */}
       {loading ? <Loader/>
       
-          : error? <Message>{error}</Message>
+          : error? <Message variant='danger'>{error}</Message>
           :   <Row>
           {/* used map to iterate info products array imported from products */}
                   {products.map((product) => {

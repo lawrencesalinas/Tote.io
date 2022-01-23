@@ -14,15 +14,15 @@ import { useParams } from "react-router-dom";
 import axios from 'axios';
 
 function ProductScreen() {
-  let idParam = useParams()
+  let {id} = useParams()
   const[product, setProduct] = useState([])
     useEffect(() => {
       async function fetchData(){
-        const {data} = await axios.get(`/api/product/${idParam.id}`)
+        const {data} = await axios.get(`/api/product/${id}`)
         setProduct(data)
       }
       fetchData()
-  }, [])
+  }, [] )
  
 
   return (
