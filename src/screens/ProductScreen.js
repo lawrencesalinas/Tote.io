@@ -100,11 +100,13 @@ const addToCartHandler = () => {
                     </Col>
                   </Row>
                 </ListGroup.Item>
+                {/* form for quantity */}
                 {product.countInStock > 0 && (
                   <ListGroup.Item>
                     <Row>
                       <Col>Qty</Col>
                       <Col xs="auto" className="my-1">
+                                {/* form for quantity */}
                         <Form.Control
                           as="select"
                           value={qty}
