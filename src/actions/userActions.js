@@ -13,7 +13,7 @@ import {
            })
            const config = {
                headers:{
-                   'Content-tyoe': 'application/json'
+                   'Content-type': 'application/json'
                }
            }
            const {data} = await axios.post(

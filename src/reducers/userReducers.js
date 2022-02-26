@@ -13,7 +13,7 @@ export const userLoginReducer = (state = {}, action ) =>{
                 return { loading: true}
             // api has returned some data, payload is we got from our api call
             case USER_LOGIN_SUCCESS:
-                return { loading: false, userinfo: action.payload }
+                return { loading: false, userInfo: action.payload }
             // error
             case USER_LOGIN_FAIL:
                 return { loading: false, error: action.payload }
