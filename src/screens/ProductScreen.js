@@ -24,7 +24,7 @@ function ProductScreen() {
   const productDetails = useSelector((state) => {
     return state.productDetails;
   });
-
+// destructure productDetails
   const { loading, error, product } = productDetails;
 
   useEffect(() => {
@@ -35,6 +35,8 @@ const addToCartHandler = () => {
   // console.log('add to cart:',id);
   navigate(`/cart/${id}?qty=${qty}`)
 }
+
+
 
 
   return (
@@ -52,7 +54,7 @@ const addToCartHandler = () => {
           {/* created 1 row with 2 colums, 1 of the columns is 6 and the other is 3 and 3 */}
           <Col md={6}>
             {/* render product Image on first column */}
-            <Image src={product.image} alt={product.name} />
+            <Image src={product.image} alt={product.name} fluid />
           </Col>
           <Col md={3}>
             {/* ListGroup is used to have a customizable list with lines around the itemns */}
@@ -107,21 +109,26 @@ const addToCartHandler = () => {
                       <Col>Qty</Col>
                       <Col xs="auto" className="my-1">
                                 {/* form for quantity */}
-                        <Form.Control
-                          as="select"
+                        <Form.Select
+                        // select for form dropdown
+                         
                           value={qty}
                           onChange={(e) => setQty(e.target.value)}
                         >
                           {
-                            //array constructor to create array of that stock
+                            // array constructor to create array of that stock
                             // created an array everytime we change the state or qty
+                            // if count is stock is  == 3 
+                            // array created like this [0, 1 ,2]
                             [...Array(product.countInStock).keys()].map((x) => {
+
                              return  <option key={x + 1} value={x + 1}>
+                               {/* x + 1 because array starts at zero */}
                                 {x + 1}
                               </option>;
                             })
                           }
-                        </Form.Control>
+                        </Form.Select>
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -131,7 +138,7 @@ const addToCartHandler = () => {
                   <Button 
                     onClick={addToCartHandler}
                     className="btn-block"
-                    disabled={product.countInStock == 0}
+                    disabled={product.countInStock === 0}
                     type="button"
                   >
                     Add to Cart

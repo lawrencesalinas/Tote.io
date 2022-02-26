@@ -11,9 +11,9 @@ import {
 
 
 // this function is in charge of calling api in homescreen
-// redux thunk can make a fucntion within a function
+// redux thunk can make a function within a function
 // dispatch will be use to dispacth actions on top
-export const listProducts = () => async(dispatch) => {
+export const listProducts = () => async(dispatch) => { 
     try{ 
         // request
         dispatch({ type: PRODUCT_LIST_REQUEST })
@@ -28,6 +28,7 @@ export const listProducts = () => async(dispatch) => {
     }catch(error){
         dispatch({
             type:PRODUCT_LIST_FAIL,
+            // check if error response is generic or custom message
             payload: error.response && error.response.data.message
             ? error.response.data.message
             : error.message,
@@ -51,8 +52,8 @@ export const listProductDetails = (id) => async(dispatch) => {
     }catch(error){
         dispatch({
             type:PRODUCT_DETAILS_FAIL,
-            payload: error.response && error.response.data.message
-            ? error.response.data.message
+            payload: error.response && error.response.data.detail
+            ? error.response.data.detail
             : error.message,
         })
     }

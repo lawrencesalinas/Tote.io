@@ -1,18 +1,18 @@
 import React from "react";
 
-function Rating(props, color) {
-//   console.log("rating props", props, color)
+function Rating({value, text, color}) {
+//   console.log("rating ", , color)
   return (
     <div className="rating">
     {/* each span is one star */}
       <span>
-        <i style= {{color:props.color}}
+        <i style= {{color: color}}
           className={
     // if rating is greater or equal to 1, star is filled  //
-            props.value >= 1
+            value >= 1
               ? "fas fa-star"
     // if rating is greater or equal to .5, star is half filled  // 
-              : props.value >= 0.5
+              : value >= 0.5
     // else star is empty 0 rating
               ? "fas fa-star-half-alt"
               : "far fa-star"
@@ -22,11 +22,11 @@ function Rating(props, color) {
 
       <span>
         <i
-          style= {{color:props.color}}
+          style= {{color:color}}
           className={
-            props.value >= 2
+            value >= 2
               ? "fas fa-star"
-              : props.value >= 1.5
+              : value >= 1.5
               ? "fas fa-star-half-alt"
               : "far fa-star"
           }
@@ -35,11 +35,11 @@ function Rating(props, color) {
 
       <span>
         <i
-          style= {{color:props.color}}
+          style= {{color:color}}
           className={
-            props.value >= 3
+            value >= 3
               ? "fas fa-star"
-              : props.value >= 2.5
+              : value >= 2.5
               ? "fas fa-star-half-alt"
               : "far fa-star"
           }
@@ -48,11 +48,11 @@ function Rating(props, color) {
 
       <span>
         <i
-          style= {{color:props.color}}
+          style= {{color:color}}
           className={
-            props.value >= 4
+            value >= 4
               ? "fas fa-star"
-              : props.value >= 3.5
+              : value >= 3.5
               ? "fas fa-star-half-alt"
               : "far fa-star"
           }
@@ -61,17 +61,17 @@ function Rating(props, color) {
 
       <span>
         <i
-          style= {{color:props.color}}
+          style= {{color:color}}
           className={
-            props.value >= 5
+            value >= 5
               ? "fas fa-star"
-              : props.value >= 4.5
+              : value >= 4.5
               ? "fas fa-star-half-alt"
               : "far fa-star"
           }
         ></i>
       </span>
-      <span>{props.text && props.text}</span>
+      <span>{text && text}</span>
     </div>
   );
 }
