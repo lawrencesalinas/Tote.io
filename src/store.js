@@ -7,14 +7,13 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { productListReducer, productDetailsReducer } from './reducers/productReducers'
 import { cartReducer } from './reducers/cartReducers';
-;
- 
-
+import { userLoginReducer } from './reducers/userReducers';
 
 const reducer = combineReducers({
     productList:productListReducer,
     productDetails: productDetailsReducer,
-    cart: cartReducer
+    cart: cartReducer,
+    userLogin : userLoginReducer,
 })
 
 // data is in local storage and we need to load it in our state
@@ -25,8 +24,12 @@ const cartItemsFromStorage = localStorage.getItem('cartItems') ?
     JSON.parse(localStorage.getItem('cartItems')) : []
  // if items exist parse them and that will be the return value
 
+ const userInfoFromStorage = localStorage.getItem('userInfo') ?
+    JSON.parse(localStorage.getItem('userInfo')) : null
+
 const initialState= {
-    cart:{cartItems: cartItemsFromStorage}
+    cart:{cartItems: cartItemsFromStorage},
+    userLogin: {userInfo: userInfoFromStorage}
 }
 const middleware = [thunk]   
 
