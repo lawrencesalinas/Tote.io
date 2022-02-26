@@ -37,3 +37,9 @@ import {
         })
        }
    }
+
+   export const logout = () => (dispatch) =>{
+       // remove userInfo from local storage then dispatch userlogout reducer
+       localStorage.removeItem('userInfo')
+       dispatch({type: USER_LOGOUT})
+   }
