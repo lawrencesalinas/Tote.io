@@ -15,7 +15,7 @@ function Product({ product }) {
     <Card className="my-3 p-3 rounded">
       <Link to={`/product/${product._id}`}>
         {/* render product name and image */}
-        <Card.Img src={product.image} />
+        <Card.Img  src={product.image} />
       </Link>
 
       <Card.Body>
@@ -40,7 +40,7 @@ function Product({ product }) {
           </div>
         </Card.Text>
 
-        <Card.Text as="h3">{product.price}</Card.Text>
+        <Card.Text as="h3">${product.price}</Card.Text>
       </Card.Body>
     </Card>
   );

@@ -38,7 +38,9 @@ function HomeScreen() {
       {loading ? <Loader/>
       
           : error? <Message variant='danger'>{error}</Message>
-          :   <Row>
+          :   
+          <div>
+          <Row>
           {/* used map to iterate info products array imported from products */}
                   {products.map((product) => {
                     return (
@@ -49,6 +51,7 @@ function HomeScreen() {
                     )
                   })}
                 </Row>
+                </div>
       }
     
     </div>
