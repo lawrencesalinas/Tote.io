@@ -60,7 +60,7 @@ import {
             }
         }
         const {data} = await axios.post(
-            '/api/users/register/',
+            '/api/users/register',
             {'name':name, 'email':email,'password':password }, 
             config
             )
