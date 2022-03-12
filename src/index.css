@@ -19,3 +19,12 @@ h2{
 h3{
   padding: 1.0rem;
 }
+
+#bags{
+  color:white;
+  font-size: 3em;
+}
+#bags:hover{
+  color:gray;
+  font-size: 3em;
+}

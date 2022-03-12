@@ -21,6 +21,11 @@ function Header() {
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
       {/* container is used to set the content's margins dealing with the responsive behaviors of your layout */}
         <Container>
+        <LinkContainer to="/">
+                <Nav.Link>
+                  <i className="fas fa-shopping-bag" id='bags'></i>
+                </Nav.Link>
+              </LinkContainer>
           {/* Link container is used to convert href container to a component page */}
           <LinkContainer to="/">
             <Navbar.Brand>Tote.io</Navbar.Brand>
